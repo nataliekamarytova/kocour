@@ -14,7 +14,7 @@ UVOD =(""" Ahoj, vitej v nasi aplikaci. Muzes zde vybirat z nekolika funkci.
 2 - Vypsat postupny vahovy narust.
 3 - Spocitat prumerny prirustek kocoura za den.
 4 - Vypsat znovu moznosti.
-5 - Zavrit aplikaci. """)
+5 - Zavrit aplikaci """)
 print(UVOD) 
 
 while True:
