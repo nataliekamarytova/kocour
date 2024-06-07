@@ -1,6 +1,6 @@
 import functools
 
-def prum_prirustek(vahy):
+'''def prum_prirustek(vahy):
     vysledek = []
     predchozi=0
     # protože od první hodnoty nic nechci odečíst nastavím si proměnnou = 0
@@ -17,5 +17,6 @@ def prum_prirustek(vahy):
         # do promenne predchozi si nastavuji dalsi vahu, kterou pak budu odecitat od vahy nasledujici
     return vysledek
 
-print(prum_prirustek([1,3,5]))
+print(prum_prirustek([1,3,5]))'''
 
+#stačilo by nakonec jenom odečíst poslední váhu od první a pak vydělit počtem dnů, po které jsme váhu sledovali
