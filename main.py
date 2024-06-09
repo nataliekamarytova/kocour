@@ -1,7 +1,5 @@
-from kocour.databaze import pridej_vahu 
-from kocour.vypocty import prum_prirustek 
 import sqlite3
-from datetime import datetime
+from kocour.prikazy import pridej_aktualni_vahu, pridej_historickou_vahu, zobraz_postupny_narust,vypocitej_prirustek
 
 connection = sqlite3.connect("kocour.db")
 
@@ -22,32 +20,17 @@ print(UVOD)
 while True:
     vyber = input('Vyber co chces udelat')
     if vyber == '1':
-        vaha = input('Zadej vahu kocoura:')
-        from datetime import date
-        datum = date.today() 
-        cursor.execute("INSERT INTO vahy VALUES (?, ?)",(str(datum), float(vaha)))
-        connection.commit()
+        pridej_aktualni_vahu(cursor, connection)
+    elif vyber == '2':
+        pridej_historickou_vahu(cursor, connection)
     elif vyber == '3':
-        pass
+        zobraz_postupny_narust(cursor)
     elif vyber == '4':
-        vahy = []
-        datumy = []
-        rows = cursor.execute("SELECT * FROM vahy").fetchall()
-        for (datum,vaha) in rows:
-            vahy.append(vaha)
-        prirustek = vahy[-1]-vahy[0]
-
-        rows = cursor.execute("SELECT * FROM vahy").fetchall()
-        for (datum,vaha) in rows:
-            datum = datetime.strptime(datum, "%Y-%m-%d")
-            datumy.append(datum)
-        rozdíl = (datumy[-1]-datumy[0]).days
-
-        denni_prirustek = prirustek/rozdíl
-        print(denni_prirustek)
+       prirustek = vypocitej_prirustek(cursor)
+       print(prirustek)
     elif vyber == '5':
         print(UVOD)
-    elif vyber == '6':
+    else:
         break
     break
 
